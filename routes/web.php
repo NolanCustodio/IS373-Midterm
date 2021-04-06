@@ -20,15 +20,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/contacts', [Contacts::class, 'index']);
-
-
 Route::get('/posts/', [\App\Http\Controllers\PostsController::class, 'index'])->name('public_posts_index');
 Route::get('/posts/{id}',[\App\Http\Controllers\PostsController::class, 'show'])->name('public_posts_show');
 
 
 Route::get('/pages/',[\App\Http\Controllers\PagesController::class, 'index'])->name('public_pages_index');
 Route::get('/pages/{id}',[\App\Http\Controllers\PagesController::class, 'show'])->name('public_pages_show');
+
+//Route::get('/pages/', function() {
+//    return view('page');
+//});
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
